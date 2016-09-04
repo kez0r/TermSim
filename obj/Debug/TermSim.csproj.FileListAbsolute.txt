@@ -1,0 +1,10 @@
+C:\Users\Shawn\AppData\Local\Temporary Projects\TermSim\bin\Debug\TermSim.exe.config
+C:\Users\Shawn\Documents\Visual Studio 2013\Projects\TermSim\TermSim\bin\Debug\TermSim.exe.config
+C:\Users\Shawn\Documents\Visual Studio 2013\Projects\TermSim\TermSim\bin\Debug\TermSim.exe
+C:\Users\Shawn\Documents\Visual Studio 2013\Projects\TermSim\TermSim\bin\Debug\TermSim.pdb
+C:\Users\Shawn\Documents\Visual Studio 2013\Projects\TermSim\TermSim\obj\Debug\TermSim.csprojResolveAssemblyReference.cache
+C:\Users\Shawn\Documents\Visual Studio 2013\Projects\TermSim\TermSim\obj\Debug\TermSim.FrmMain.resources
+C:\Users\Shawn\Documents\Visual Studio 2013\Projects\TermSim\TermSim\obj\Debug\TermSim.Properties.Resources.resources
+C:\Users\Shawn\Documents\Visual Studio 2013\Projects\TermSim\TermSim\obj\Debug\TermSim.csproj.GenerateResource.Cache
+C:\Users\Shawn\Documents\Visual Studio 2013\Projects\TermSim\TermSim\obj\Debug\TermSim.exe
+C:\Users\Shawn\Documents\Visual Studio 2013\Projects\TermSim\TermSim\obj\Debug\TermSim.pdb
