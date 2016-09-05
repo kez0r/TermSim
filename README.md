@@ -1,8 +1,8 @@
 # **TermSim**
 
-A simple terminal-like string command processor system.  
+A simple, easy to integrate shell-like command processor system.   
 
-**_Includes 7 command examples:_**
+**_Includes 7 example commands:_**
 * cd  
 * ls  
 * pwd
