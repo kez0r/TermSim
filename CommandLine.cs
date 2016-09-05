@@ -1,7 +1,4 @@
-﻿// Copyright (c) 2011 Jonathan Wood
-// Edited & Re-factored by kez (ProcessArguments, InputCommand, Help methods by kez) [mailto:kez@jigmatic.com]      
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,16 +6,16 @@ using System.Text.RegularExpressions;
 
 namespace TermSim
 {
-    public class CommandLineFlag
+    public class CommandFlags 
 	{
         public string Flag { get; set; }
         public string Argument { get; set; }
 	}
 	
-	class CommandLine
+	class CommandLine 
 	{
         public List<string> Arguments { get; set; } //command-line argument list
-        public List<CommandLineFlag> Flags { get; set; } //command-line flag list
+        public List<CommandFlags> Flags { get; set; } //command-line flag list
 
 		//parser state variables
 	    readonly string _cmd;
@@ -29,32 +26,32 @@ namespace TermSim
 		{
 			//initialize parser variables
 			Arguments = new List<string>();
-            Flags = new List<CommandLineFlag>();
+            Flags = new List<CommandFlags>();
             _cmd = commandLine;
             _pos = 0;
 
 			//loop until all characters processed
-			while (!EndOfText)
+			while (!EOL)
 			{
                 while (Char.IsWhiteSpace(CurrentChar())) //skip whitespace
-					MoveAhead();
+					AdvancePos();
 
 				//check if 'flag'
 				if (CurrentChar() == '/' || CurrentChar() == '-')
 				{
-					MoveAhead();
+					AdvancePos();
 					var start = _pos;
 
 					while (Char.IsLetterOrDigit(CurrentChar()))
-						MoveAhead();
+						AdvancePos();
 
 				    if (_pos <= start) continue;
 
-				    var flag = new CommandLineFlag {Flag = _cmd.Substring(start, _pos - start)}; //construct parsed flag
+				    var flag = new CommandFlags {Flag = _cmd.Substring(start, _pos - start)}; //construct parsed flag
 
 				    if (CurrentChar() == ':') //check for flag argument delimiter
 				    {
-				        MoveAhead();
+				        AdvancePos();
                         flag.Argument = ParseArgument(); //parse flag value (argument)
 				    }
 
@@ -71,7 +68,7 @@ namespace TermSim
 		}
 
 		///<summary> Returns true if the current position is end of string. </summary>
-		protected bool EndOfText
+		protected bool EOL 
 		{
 			get { return (_pos >= _cmd.Length); }
 		}
@@ -83,7 +80,7 @@ namespace TermSim
 		}
 
 		///<summary> Advances current position to next character. </summary>
-		protected char MoveAhead()
+		protected char AdvancePos()
 		{
 			var c = CurrentChar();
 			_pos = Math.Min(_pos + 1, _cmd.Length);
@@ -99,22 +96,22 @@ namespace TermSim
 			if (CurrentChar() == '"' || CurrentChar() == '\'')
 			{
 				//parse quoted argument
-				var quote = MoveAhead();
+				var quote = AdvancePos();
 				var start = _pos;
 
 			    //ReSharper disable once LoopVariableIsNeverChangedInsideLoop (re-sharper doesn't realize MoveAhead() increments loop control variable)
-				while (!EndOfText && CurrentChar() != quote)
-					MoveAhead();
+				while (!EOL && CurrentChar() != quote)
+					AdvancePos();
 
 				result = _cmd.Substring(start, _pos - start);
-				MoveAhead(); //skip closing quote
+				AdvancePos(); //skip closing quote
 			}
 			else
 			{
                 var start = _pos; //parse argument
 
-				while (!EndOfText && !Char.IsWhiteSpace(CurrentChar()) && CurrentChar() != '/' && CurrentChar() != '-')
-					MoveAhead();
+				while (!EOL && !Char.IsWhiteSpace(CurrentChar()) && CurrentChar() != '/' && CurrentChar() != '-')
+					AdvancePos();
 
 				result = _cmd.Substring(start, _pos - start);
 			}
@@ -161,9 +158,6 @@ namespace TermSim
                     Components.ListFiles(cmd.Flags); //list files in present working directory (1 argument; -help)
                     break;
                 //misc
-                case "mintray":
-                    Components.MinimizeToTray(); //toggle minimize to tray (0 arguments)
-                    break;
                 case "ontop":
                     Components.StayOnTop(); //toggle stay on top (0 arguments)
                     break;

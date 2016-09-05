@@ -41,10 +41,10 @@ namespace TermSim
         }
         
         //file system navigation
-        public static void ChangeDirectory(List<CommandLineFlag> flags)
+        public static void ChangeDirectory(List<CommandFlags> flags)
         {
             if (flags.Count != 0)
-            foreach (CommandLineFlag f in flags)
+            foreach (CommandFlags f in flags)
             {
                 //parse flags
                 switch (f.Flag)
@@ -97,6 +97,7 @@ namespace TermSim
                             FrmMain.Instance.TerminalWriteLine("Error", "Path not found!", true, Color.Red);
 
                         break;
+
                     case "help":
                         Help("cd", 1, "[-i]", "[cd -i:c:\\windows, cd -i:\"c:\\with spaces\"]");
                         break;
@@ -109,11 +110,11 @@ namespace TermSim
                 FrmMain.Instance.TerminalWriteLine("Error", "Invalid Syntax!", true, Color.Red);
         }
 
-        public static void ListFiles(List<CommandLineFlag> flags)
+        public static void ListFiles(List<CommandFlags> flags)
         {
             if (flags.Count != 0)
             {
-                foreach (CommandLineFlag f in flags)
+                foreach (CommandFlags f in flags)
                     //parse flags
                     switch (f.Flag)
                     {
@@ -161,14 +162,6 @@ namespace TermSim
             FrmMain.Instance.TerminalWriteLine("Help", "Command: [" + command + "] ‒ Arguments: [" + numArgs + "]", true, Color.DarkOrchid);
             FrmMain.Instance.TerminalWriteLine("Help", "Args: " + argList, true, Color.DarkOrchid);
             FrmMain.Instance.TerminalWriteLine("Help", "Usage: " + usageEx, true, Color.DarkOrchid);
-        }
-        
-        public static void MinimizeToTray()
-        {
-            FrmMain.ApplicationVariables.minToTray = FrmMain.ApplicationVariables.minToTray == 1 ? 0 : 1; //toggle variable
-            FrmMain.Instance.TopMost = FrmMain.ApplicationVariables.onTop != 0; //toggle topmost state
-
-            FrmMain.Instance.TerminalWriteLine("Settings", FrmMain.ApplicationVariables.minToTray == 1 ? "Minimize to tray ‒ [enabled]" : "Minimize to tray ‒ [disabled]", true, Color.Coral);
         }
 
         public static void StayOnTop()
