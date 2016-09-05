@@ -6,7 +6,6 @@ A simple terminal-like string command processor system.
 * cd  
 * ls  
 * pwd
-* mintray
 * ontop
 * clear
 * savelog
@@ -21,8 +20,7 @@ A simple terminal-like string command processor system.
 `$ cd -i:..`  
 `$ cd -help`  
 `$ ls`  
-`$ pwd`  
-`$ mintray`  
+`$ pwd`    
 `$ ontop`  
 `$ clear`  
 `$ savelog `  
