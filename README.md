@@ -2,7 +2,7 @@
 
 A simple terminal-like string command processor system.  
 
-**_Includes 8 command examples:_**
+**_Includes 7 command examples:_**
 * cd  
 * ls  
 * pwd
