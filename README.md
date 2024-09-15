@@ -1,6 +1,6 @@
 # **TermSim**
 
-A simple, easy to integrate shell-like command processor system.   
+A simple, easy to integrate terminal-like command processor system.   
 
 **_Includes 7 example commands:_**
 * cd  
@@ -26,6 +26,6 @@ A simple, easy to integrate shell-like command processor system.
 `$ savelog `  
 `$ exit` 
   
-**Commands may also be strung together with 'pipes'.**   
+* Commands may also be combined with pipes.
 
 ex. `clear | pwd | cd -i:c:\windows | ls | cd -i:.. | ls`
